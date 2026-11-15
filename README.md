@@ -8,7 +8,9 @@ Paced Chat puts the message box and the paced reply in one Hermes Desktop tab. I
 
 1. In Hermes Desktop 0.23.0 or later, open **Capabilities → Plugins → Install from Git**.
 2. Enter `https://github.com/Dragos-cloud/paced-chat`. Select the **Desktop** target and install.
-3. Enable **Paced Chat** in the Desktop column if needed. Press **Ctrl+K** on Windows or **⌘K** on macOS, then choose **Open Paced Chat**.
+3. Enable **Paced Chat** in the Desktop column if needed. Click **Paced Chat** in the status bar, or press **Ctrl+K** on Windows or **⌘K** on macOS and choose **Open Paced Chat**.
+
+You can also assign a shortcut such as **Ctrl+Shift+P** to **Open Paced Chat** in Hermes Desktop's keybind settings. No shortcut is assigned by default, so existing shortcuts are not changed.
 
 If Hermes reports an existing manual install with the same ID, remove the manually copied `plugin.js` from your Desktop plug-ins folder before switching to the GitHub install.
 
@@ -18,7 +20,7 @@ If Hermes reports an existing manual install with the same ID, remove the manual
 2. In File Explorer, open `%LOCALAPPDATA%\hermes\desktop-plugins`. Create `desktop-plugins` and its `paced-chat` subfolder if needed. If the Desktop app uses a custom `HERMES_HOME`, use its `desktop-plugins` folder.
 3. Copy `plugin.js` into `desktop-plugins\paced-chat`. That folder is also where the previous ZIP installed `plugin.js`, so replace that file if prompted.
 4. In Hermes Desktop, press **Ctrl+K** and run **Reload desktop plugins**. Under **Capabilities → Plugins**, check that **Paced Chat** is enabled in the Desktop column.
-5. Press **Ctrl+K** and run **Open Paced Chat**.
+5. Click **Paced Chat** in the status bar, or press **Ctrl+K** and run **Open Paced Chat**.
 
 Install the file on the computer running the Desktop app, including when Desktop connects to a Hermes backend in WSL. Use Nous Research Hermes Desktop 0.23.0 or later with a connected Hermes gateway. If you install a published package through **Capabilities → Plugins**, use the Desktop target. If Hermes reports an existing manual install with the same ID, remove the manually copied `plugin.js` before switching to the managed install.
 

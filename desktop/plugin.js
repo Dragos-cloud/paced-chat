@@ -1,7 +1,7 @@
 import * as sdk from '@hermes/plugin-sdk'
 import { Component, createElement as h, useId, useLayoutEffect, useRef, useSyncExternalStore } from 'react'
 
-const { host, PALETTE_AREA, MessageTextContent } = sdk
+const { host, PALETTE_AREA, KEYBINDS_AREA, MessageTextContent } = sdk
 const ID = 'paced-chat'
 const NAME = 'Paced Chat'
 const MIN_WPM = 90
@@ -532,6 +532,22 @@ export default {
       area: PALETTE_AREA,
       data: { id: `${ID}.open`, label: 'Open Paced Chat', keywords: ['reading', 'speed', 'pace'], run: open },
     })
+    ctx.register({
+      id: 'status-chip',
+      area: 'statusBar.right',
+      render: () => h('button', {
+        type: 'button',
+        className: 'px-1.5 text-[0.6875rem] text-(--ui-text-tertiary)',
+        onClick: open,
+      }, NAME),
+    })
+    if (KEYBINDS_AREA) {
+      ctx.register({
+        id: 'open-keybind',
+        area: KEYBINDS_AREA,
+        data: { id: `${ID}.open`, label: 'Open Paced Chat', run: open },
+      })
+    }
     ctx.onDispose(() => workspace?.close?.())
   },
 }
