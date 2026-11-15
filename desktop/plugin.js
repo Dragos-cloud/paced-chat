@@ -182,13 +182,29 @@ function createChat(ctx, target) {
   async function loadHistory() {
     if (!sessionId) return
     try {
-      const result = await host.request('session.history', { session_id: sessionId })
+      let result
+      try {
+        result = await host.request('session.history', { session_id: sessionId })
+      } catch (error) {
+        // A focused runtime id can be gone (gateway restarted, or the conversation was
+        // restored from history and never attached). session.resume takes the STORED id
+        // and returns a live pair, so re-attach rather than bricking the pane.
+        if (!storedId) throw error
+        const resumed = await host.request('session.resume', { session_id: storedId })
+        if (disposed || stale) return
+        if (!resumed?.session_id) throw error
+        sessionId = resumed.session_id
+        storedId = resumed.stored_session_id ?? storedId
+        result = await host.request('session.history', { session_id: sessionId })
+      }
       if (disposed || stale) return
       rows = messageRows(result)
     } catch (error) {
       if (disposed || stale) return
-      stale = true
-      notice = `Couldn't load the conversation. ${error.message ?? ''} Open it in Hermes and try again.`
+      // Unreadable history must not block sending: drop the dead binding so Send
+      // starts a new conversation, and say so plainly.
+      sessionId = null
+      notice = 'Couldn\'t load the earlier messages. Sending starts a new conversation.'
     } finally {
       if (!disposed) {
         loading = false
