@@ -1,0 +1,4 @@
+name: paced-chat
+version: "0.1.1"
+description: A Hermes Desktop chat tab that reveals streamed replies at a user-selected reading speed.
+requires_hermes: ">=0.23.0"
