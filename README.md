@@ -2,7 +2,13 @@
 
 User guide · Version 0.1.1
 
-Paced Chat puts the message box and the paced reply in one Hermes Desktop tab. It uses the conversation’s existing Hermes model. To use a local model, select a Hermes profile or conversation that already uses your LM Studio model.
+Paced Chat is an alternate chat view for Hermes Desktop that lets you read replies at your own pace instead of racing the model’s token stream. Longer or information-dense answers can be difficult to follow when words arrive faster than you can read them; waiting for the whole answer before reading, on the other hand, means you cannot follow along as it is generated.
+
+Choose a display speed from 90 to 600 words per minute, follow the reply as it appears, then adjust the pace or use **Show all** to catch up. Your speed setting is remembered, and the pane keeps the message box and reply together in the same conversation.
+
+The accompanying research, *Streaming, Fast and Slow: Cognitive Load-Aware Streaming for Efficient LLM Serving*, explores adapting delivery speed to content complexity. Paced Chat applies the reader-controlled pacing idea in a simpler way: it does not estimate cognitive load or automatically adapt to each passage. It changes only how quickly received text is revealed—not how quickly Hermes generates it, which model or provider it uses, or the answer itself. The goal is to make streamed replies easier to follow, not to promise improved comprehension or reduced model-serving costs.
+
+Paced Chat uses the conversation’s existing Hermes model. To use a local model, select a Hermes profile or conversation that already uses your LM Studio model.
 
 ## Install in Hermes Desktop from GitHub
 
