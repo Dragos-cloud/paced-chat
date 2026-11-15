@@ -1,6 +1,6 @@
 # Paced Chat for Hermes Desktop
 
-User guide · Version 0.1.1
+Version 0.1.1
 
 Paced Chat is an alternate chat view for Hermes Desktop that lets you read replies at your own pace instead of racing the model’s token stream. Longer or information-dense answers can be difficult to follow when words arrive faster than you can read them; waiting for the whole answer before reading, on the other hand, means you cannot follow along as it is generated.
 
