@@ -39,7 +39,7 @@ This version handles text chat. It uses Hermes’ Markdown renderer where availa
 
 Paced Chat reads the selected conversation’s text history through the Hermes gateway, sends prompts when you submit them, and subscribes to the reply stream. **Stop** requests a Hermes session interrupt. Hermes processes prompts through the profile’s configured provider, including a cloud provider if selected, and saves the conversation in its normal history. The plug-in stores one setting, the reading speed, through the Desktop SDK. It makes zero direct third-party network requests and accesses zero credential files. It adds zero tools, hooks, shell calls, background processes, or telemetry. Tool approvals remain in Hermes.
 
-If the gateway disconnects or you switch profiles, close Paced Chat and reopen it from the conversation. If Hermes cannot confirm a send, the pane retains the draft and asks you to check the conversation before resending.
+When opening a conversation whose live session is gone, Paced Chat tries to re-attach it by its stored id. If the earlier messages cannot be read, the pane says so and sending starts a new conversation. If the gateway disconnects while the pane is open or you switch profiles, close Paced Chat and reopen it from the conversation. If Hermes cannot confirm a send, the pane retains the draft and asks you to check the conversation before resending.
 
 ## Quick test after installation
 
@@ -54,7 +54,7 @@ Turn off **Paced Chat** under **Capabilities → Plugins**. To remove it, delete
 
 ## Release notes
 
-- **0.1.1** adds the Hermes package manifest, the standard Desktop entrypoint layout, and the public catalogue submission files.
+- **0.1.1** re-attaches to the conversation when its live session is gone (gateway restart, restored conversation) instead of becoming read-only; an unreadable history no longer blocks sending. It also adds the Hermes package manifest, the standard Desktop entrypoint layout, and the public catalogue submission files.
 - **0.1.0** introduces the single chat pane, live reply pacing, per-reply catch-up, and a saved reading-speed preference.
 
 ## Hermes references
